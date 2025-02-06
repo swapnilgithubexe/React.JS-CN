@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <title>React App</title>
+
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const App = () => {
+      const tempInFahrenheit = 12;
+      //Do not modify the function structure (do not change the function to an arrow function)
+
+      function toCelsius(temp) {
+        //write logic here to convert the temp in celsius
+        const celTemp = (temp - 32) * (5 / 9)
+        return celTemp
+      }
+
+      return (
+        <>
+          <h1>Temperature Converter</h1>
+          <p>Temperature in fahrenheit: {tempInFahrenheit}</p>
+          {/* display the temperature in celcius here using the p tag by passing the */}
+          <p>Temperature in celsius: {toCelsius(tempInFahrenheit)}</p>
+        </>
+      );
+    };
+
+    const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+    rootElement.render(<App />);
+  </script>
+
+</body>
+
+</html>
