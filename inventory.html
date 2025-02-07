@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <title>React App</title>
+
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const App = () => {
+      const itemsSold = [
+        { id: 1, name: "iPhone 14", price: 1200, qty: 22 },
+        { id: 2, name: "iPad Pro", price: 800, qty: 18 },
+        { id: 3, name: "Macbook Air", price: 1500, qty: 7 },
+        { id: 4, name: "Samsung S23", price: 1100, qty: 16 },
+        { id: 5, name: "Dell Inspiron 5590", price: 1200, qty: 5 }
+      ];
+      const rev = itemsSold.reduce((acc, i) => {
+        return acc + (i.price * i.qty)
+      }, 0)
+
+      return (
+        <>
+          <h1>Record of sold items</h1>
+          <table border="1px">
+            {/* iterate over data here */}
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Selling price</th>
+                <th>Quantity</th>
+              </tr>
+
+            </thead>
+            <tbody>
+              {
+                itemsSold.map(i =>
+                  <tr key={i.id}>
+                    <td>{i.id}</td>
+                    <td>{i.name}</td>
+                    <td>{i.price}</td>
+                    <td>{i.qty}</td>
+                  </tr>
+                )}
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <td>Total Revenue</td>
+                <td>{rev}</td>
+              </tr>
+            </tfoot>
+
+          </table>
+        </>
+      );
+    };
+
+    const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+    rootElement.render(<App />);
+  </script>
+
+</body>
+
+</html>
