@@ -10,7 +10,7 @@ Swapnil Dutta
 
 ## Introduction
 
-This repository serves as a structured learning resource for mastering React. It covers foundational concepts like JSX, components, and props, progressing to advanced topics such as state management, hooks, and event handling. The project follows a non-CRA approach where React is directly included in HTML files.
+This repository serves as a structured learning resource for mastering React. It covers foundational concepts like JSX, components, and props, progressing to advanced topics such as state management, hooks, and event handling. The project initially follows a non-CRA approach where React is directly included in HTML files.
 
 Topics Covered
 
