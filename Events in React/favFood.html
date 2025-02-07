@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>React App</title>
+  <style>
+    .food-list {
+      display: grid;
+      padding: 20px;
+      grid-template: repeat(3, 200px) / repeat(auto-fit, minmax(180px, 1fr));
+      grid-auto-flow: row;
+      grid-auto-rows: 200px;
+      gap: 20px;
+    }
+
+    .food-list div {
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgb(198, 245, 245);
+      border: 3px solid transparent;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .food-list div:hover {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .food-list div img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    .favourite-food {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgb(238, 255, 144);
+    }
+
+    .favourite-food img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const food = {
+      pizza: {
+        name: "Pizza",
+        image:
+          "https://res.cloudinary.com/dl26pbek4/image/upload/v1672294935/assets/shourav-sheikh-a66sGfOnnqQ-unsplash_dufyvk.jpg",
+      },
+      burger: {
+        name: "Burger",
+        image:
+          "https://res.cloudinary.com/dl26pbek4/image/upload/v1672294934/assets/food-photographer-E94j3rMcxlw-unsplash_kuljtd.jpg",
+      },
+      pasta: {
+        name: "Pasta",
+        image:
+          "https://res.cloudinary.com/dl26pbek4/image/upload/v1672294934/assets/pixzolo-photography-aeESmmFKH0M-unsplash_wag5lc.jpg",
+      },
+      sushi: {
+        name: "Sushi",
+        image:
+          "https://res.cloudinary.com/dl26pbek4/image/upload/v1672294934/assets/pixzolo-photography-aeESmmFKH0M-unsplash_wag5lc.jpg",
+      },
+      chickenBiryani: {
+        name: "Chicken Biryani",
+        image:
+          "https://res.cloudinary.com/dl26pbek4/image/upload/v1672294935/assets/mario-raj-ysmeQt1dzcw-unsplash_ivdvre.jpg",
+      },
+    };
+
+    let favouriteFood;
+
+    // Task: Refactor to create a single handleFoodClick function that works for all items
+
+    const handleFoodClick = (food) => {
+      favouriteFood = food;
+      rootElement.render(
+        <>
+          {favouriteFood && <FavouriteFood />
+          }        <App />
+        </>
+      );
+
+    };
+
+
+    const FavouriteFood = () => (
+      <div className="favourite-food">
+        <span>Your favourite food is:</span>
+        <h3>{favouriteFood.name}</h3>
+        <img src={favouriteFood.image} />
+      </div>
+    );
+
+    const App = () => (
+      <div className="App">
+        {/* Hint: Use logical && to render FavouriteFood only if favouriteFood is defined */}
+        {/* Write code here to render the FavouriteFood component conditionally */}
+        <h2>Select your favourite food</h2>
+        <div className="food-list">
+          {/* Refactor the onClick handlers below to use a single handler function */}
+          <div onClick={() => handleFoodClick(food.pizza)}>
+            <h3>{food.pizza.name}</h3>
+            <img src={food.pizza.image} />
+          </div>
+
+          <div onClick={() => handleFoodClick(food.burger)}>
+            <h3>{food.burger.name}</h3>
+            <img src={food.burger.image} />
+          </div>
+
+          <div onClick={() => handleFoodClick(food.pasta)}>
+            <h3>{food.pasta.name}</h3>
+            <img src={food.pasta.image} />
+          </div>
+
+          <div onClick={() => handleFoodClick(food.sushi)}>
+            <h3>{food.sushi.name}</h3>
+            <img src={food.sushi.image} />
+          </div>
+
+          <div onClick={() => handleFoodClick(food.chickenBiryani)}>
+            <h3>{food.chickenBiryani.name}</h3>
+            <img src={food.chickenBiryani.image} />
+          </div>
+        </div>
+      </div>
+    );
+
+    const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+    rootElement.render(<App />);
+  </script>
+</body>
+
+</html>
