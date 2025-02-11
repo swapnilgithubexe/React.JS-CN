@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <title>React App</title>
+  <style>
+    .card {
+      width: 250px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      margin: 50px auto;
+      background-color: rgb(236, 236, 236);
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 60%;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // Do not change the classNames of the elements from the default markup
+
+    // Create the state variables for name, email, and about.
+
+    let name = "";
+    let email = "";
+    let about = "";
+
+    // Add onChange handlers for each input field to capture the user input.
+    const onChange = (e) => {
+      const { name: fieldName, value } = e.target;
+      if (fieldName === "name") name = value;
+      if (fieldName === "email") email = value;
+      if (fieldName === "about") about = value;
+
+      rootElement.render(<App />)
+    }
+
+    const Card = () => (
+      <div className="card">
+        {/* Display the values of name, email, and about dynamically */}
+        <h3>Name: {name}</h3>
+        <p>Email: {email}</p>
+        <p>About: {about}</p>
+      </div>
+    );
+
+
+
+    const App = () => (
+      <div className="App">
+        {/* TODO: Add the Card component here to render the user's input values (name, email, about).*/}
+        <Card name={name} email={email} about={about} />
+
+        <div className="inputs">
+          {/* Add onChange event handlers to capture the input value */}
+          <input name="name" placeholder="Name" onChange={onChange} />
+          <input name="email" type="email" placeholder="Email" onChange={onChange} />
+          <textarea name="about" placeholder="About" onChange={onChange}></textarea>
+        </div>
+      </div>
+    );
+
+    const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+    rootElement.render(<App />);
+  </script>
+</body>
+
+</html>
