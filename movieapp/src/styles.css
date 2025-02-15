@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #f1f1f1;
@@ -30,11 +30,10 @@ body {
 }
 .movie-card .left {
   flex: 1;
-  padding: 5px
+  padding: 5px;
 }
 .movie-card .left img {
   height: 250px;
-  
 }
 .movie-card .right {
   position: relative;
@@ -53,13 +52,13 @@ body {
   margin-top: 20px;
   padding: 0 20px;
   font-weight: 500;
-  color: rgb(0, 75, 0)
+  color: rgb(0, 75, 0);
 }
 .footer {
   position: absolute;
   bottom: 0;
   display: flex;
-  
+
   width: 100%;
   padding: 10px 20px;
   box-sizing: border-box;
@@ -67,32 +66,30 @@ body {
 .footer .rating {
   font-size: 20px;
   font-weight: 600;
-  flex:1
+  flex: 1;
 }
 
-.footer .stars{
+.footer .stars {
   width: 20px;
   height: 20px;
 }
 .footer .star-dis {
   font-size: 20px;
   font-weight: 600;
-  flex:1;
+  flex: 1;
   position: relative;
 }
 
 footer.starCount {
   font-size: 20px;
   font-weight: 600;
-  position:absolute;
+  position: absolute;
   left: 50;
-
 }
-
 
 .footer .str-btn {
   width: 7px;
-  height: 7px
+  height: 7px;
 }
 .footer button {
   font-size: 15px;
@@ -101,22 +98,24 @@ footer.starCount {
   border-radius: 3px;
   border: none;
   font-weight: 600;
-  
- 
 }
 .favourite-btn {
   background-color: #bc16dd;
   color: #fff;
   margin: 5px;
 }
-.cart-btn{
-  
-      background-color: #251bb1;
-      color: #fff;
-      margin: 5px;
-    
+.cart-btn {
+  background-color: #251bb1;
+  color: #fff;
+  margin: 5px;
 }
 .unfavourite-btn {
+  background-color: #db2828;
+  color: #fff;
+  text-shadow: none;
+  margin: 5px;
+}
+.remove-cart-btn {
   background-color: #db2828;
   color: #fff;
   text-shadow: none;

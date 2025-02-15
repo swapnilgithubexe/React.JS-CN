@@ -5,7 +5,7 @@ import "./styles.css";
 class MovieCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { starsCount: 0 }
+    this.state = { starsCount: 0, fav: false, addedToCart: false }
   }
   increaseLikeCount = () => {
     if (this.state.starsCount >= 10) {
@@ -18,6 +18,16 @@ class MovieCard extends React.Component {
       return alert("Stars cant be less than 0")
     }
     this.setState((prevState) => ({ starsCount: prevState.starsCount - 1 }))
+
+  }
+  handleFavorite = () => {
+    this.setState({ fav: !this.state.fav })
+  }
+
+  addToCart = () => {
+    this.setState({
+      addedToCart: !this.state.addedToCart
+    })
   }
 
   render() {
@@ -43,8 +53,13 @@ class MovieCard extends React.Component {
                   className="str-btn" onClick={this.increaseLikeCount} />
                 <span>{this.state.starsCount}</span>
               </div>
-              <button className="favourite-btn">Favourite</button>
-              <button className="cart-btn">Add to Cart</button>
+              {this.state.fav ? <button className="unfavourite-btn" onClick={this.handleFavorite}>Unfavourite</button> : <button className="favourite-btn" onClick={this.handleFavorite}>Favourite</button>}
+
+
+              {this.state.addedToCart ? <button className="remove-cart-btn" onClick={this.addToCart}>Remove from Cart</button> : <button className="cart-btn" onClick={this.addToCart}>Add to Cart</button>}
+
+
+
             </div>
           </div>
 

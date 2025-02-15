@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+/* normal style to the div element irrespective of the theme */
+div {
+  box-sizing: border-box;
+  justify-content: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  width: 150px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding-block: 5px;
+  align-self: center;
+  cursor: pointer;
+  background: #2b2d42;
+  color: #fff;
+}
+/* style when the div have classname as dark */
+div .dark {
+  background-color: #2b2d42;
+  color: #fff;
+}
+/* style when the theme is selected as dark */
+.dark button {
+  background-color: #fff;
+  color: #000;
+}
+
+div .light {
+  background-color: #fff;
+  color: #2b2d42;
+}
+.light button {
+  background-color: #2b2d42;
+  color: #fff;
+}
