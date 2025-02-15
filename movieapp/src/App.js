@@ -1,4 +1,4 @@
-import MovieCard from "./movieCard.js";
+import MovieList from "./movieList.js";
 
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <>
         <h1> Hi Guys </h1>
-        <MovieCard />
+        <MovieList />
 
       </>
     </div>
