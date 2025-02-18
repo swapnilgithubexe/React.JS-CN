@@ -7,6 +7,8 @@ class MovieCard extends React.Component {
     this.state = { starsCount: 0, addedToCart: false };
   }
 
+  //implement the function
+
   increaseLikeCount = () => {
     if (this.state.starsCount >= 10) {
       return alert("Stars can't be more than 10");
