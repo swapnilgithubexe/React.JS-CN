@@ -2,35 +2,8 @@ import React from "react";
 import "./styles.css";
 
 class MovieCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { starsCount: 0, addedToCart: false };
-  }
-
-  //implement the function
-
-  increaseLikeCount = () => {
-    if (this.state.starsCount >= 10) {
-      return alert("Stars can't be more than 10");
-    }
-    this.setState((prevState) => ({ starsCount: prevState.starsCount + 1 }));
-  };
-
-  decreaseStarsCount = () => {
-    if (this.state.starsCount <= 0) {
-      return alert("Stars can't be less than 0");
-    }
-    this.setState((prevState) => ({ starsCount: prevState.starsCount - 1 }));
-  };
-
-  addToCart = () => {
-    this.setState((prevState) => ({
-      addedToCart: !prevState.addedToCart
-    }));
-  };
-
   render() {
-    const { title, plot, poster, rating, price, fav, toggleFavorite } =
+    const { title, plot, poster, rating, price, fav, toggleFavorite, star, addStar, reduceStar } =
       this.props.data;
 
     return (
@@ -52,7 +25,7 @@ class MovieCard extends React.Component {
                   alt="minus"
                   src="https://cdn-icons-png.flaticon.com/128/2801/2801932.png"
                   className="str-btn"
-                  onClick={this.decreaseStarsCount}
+                  onClick={reduceStar}
                 />
                 <img
                   alt="star"
@@ -63,9 +36,9 @@ class MovieCard extends React.Component {
                   alt="plus"
                   src="https://cdn-icons-png.flaticon.com/128/748/748113.png"
                   className="str-btn"
-                  onClick={this.increaseLikeCount}
+                  onClick={addStar}
                 />
-                <span>{this.state.starsCount}</span>
+                <span>{star}</span>
               </div>
 
 
@@ -74,14 +47,14 @@ class MovieCard extends React.Component {
               </button>
 
 
-              <button
+              {/* <button
                 className={
                   this.state.addedToCart ? "remove-cart-btn" : "cart-btn"
                 }
                 onClick={this.addToCart}
               >
                 {this.state.addedToCart ? "Remove from Cart" : "Add to Cart"}
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
