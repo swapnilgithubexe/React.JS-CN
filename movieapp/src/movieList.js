@@ -43,34 +43,47 @@ class MovieList extends React.Component {
           price: 139,
           star: 0,
           fav: false,
-          isInCart: false,
-          // toggleFavorite: () => {
-          //   this.setState((prevState) => ({
-          //     movieData: {
-          //       ...prevState.movieData,
-          //       fav: !prevState.movieData.fav
-          //     }
-          //   }));
-          // },
-          // addStar: () => {
-          //   this.setState((prevState) => ({
-          //     star: prevState.star + 1
-          //   }))
-          // },
-          // reduceStar: () => {
-          //   this.setState((prevState) => ({
-          //     star: prevState.star > 0 ? prevState.star - 1 : 0
-          //   }))
-          // }
+          isInCart: false
         }]
     }
   }
   toggleFavorite = (index) => {
-    console.log("click");
-
     this.setState((prevState) => {
       const updatedMovies = [...prevState.movies];
       updatedMovies[index] = { ...updatedMovies[index], fav: !updatedMovies[index].fav }
+      return { movies: updatedMovies }
+    })
+  }
+
+  handleIncStars = (index) => {
+    this.setState((prevState) => {
+
+      const updatedMovies = [...prevState.movies];
+      updatedMovies[index] = {
+        ...updatedMovies[index],
+        star: updatedMovies[index].star < 10 ? updatedMovies[index].star + 1 : updatedMovies[index].star
+      };
+      return { movies: updatedMovies }
+    })
+  }
+  removeStars = (index) => {
+    this.setState((prevState) => {
+
+      const updatedMovies = [...prevState.movies];
+      updatedMovies[index] = {
+        ...updatedMovies[index],
+        star: updatedMovies[index].star > 0 ? updatedMovies[index].star - 1 : updatedMovies[index].star
+      }
+      return { movies: updatedMovies };
+    })
+  }
+  addedToCart = (index) => {
+    this.setState((prevState) => {
+      const updatedMovies = [...prevState.movies];
+      updatedMovies[index] = {
+        ...updatedMovies[index],
+        isInCart: !updatedMovies[index].isInCart
+      }
       return { movies: updatedMovies }
     })
   }
@@ -79,7 +92,9 @@ class MovieList extends React.Component {
     return (
       <>
         {this.state.movies.map((item, index) => {
-          return <MovieCard key={index} data={item} toggleFavorite={() => this.toggleFavorite(index)} />
+          return <MovieCard key={index} data={item} toggleFavorite={() => this.toggleFavorite(index)} addStars={() => this.handleIncStars(index)} removeStars={() => this.removeStars(index)}
+            addedToCart={() => this.addedToCart(index)}
+          />
         })}
       </>
     )

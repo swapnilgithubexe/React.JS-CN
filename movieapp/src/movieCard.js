@@ -3,7 +3,7 @@ import "./styles.css";
 
 class MovieCard extends React.Component {
   render() {
-    const { title, plot, poster, rating, price, fav, toggleFavorite, star, addStar, reduceStar } =
+    const { title, plot, poster, rating, price, fav, star, isInCart } =
       this.props.data;
 
     return (
@@ -25,7 +25,7 @@ class MovieCard extends React.Component {
                   alt="minus"
                   src="https://cdn-icons-png.flaticon.com/128/2801/2801932.png"
                   className="str-btn"
-                  onClick={reduceStar}
+                  onClick={this.props.removeStars}
                 />
                 <img
                   alt="star"
@@ -36,25 +36,26 @@ class MovieCard extends React.Component {
                   alt="plus"
                   src="https://cdn-icons-png.flaticon.com/128/748/748113.png"
                   className="str-btn"
-                  onClick={addStar}
+                  onClick={this.props.addStars}
                 />
                 <span>{star}</span>
               </div>
 
 
-              <button className="favourite-btn" onClick={toggleFavorite}>
+              <button className={fav ? "unfavourite-btn" : "favourite-btn"} onClick={this.props.toggleFavorite}>
                 {fav ? "Unfavourite" : "Favourite"}
               </button>
 
 
-              {/* <button
+              <button
                 className={
-                  this.state.addedToCart ? "remove-cart-btn" : "cart-btn"
+                  isInCart ? "remove-cart-btn" : "cart-btn"
                 }
-                onClick={this.addToCart}
+                onClick={this.props.addedToCart}
               >
-                {this.state.addedToCart ? "Remove from Cart" : "Add to Cart"}
-              </button> */}
+                {isInCart ? "Remove from Cart" : "Add to Cart"}
+              </button>
+
             </div>
           </div>
         </div>
