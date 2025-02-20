@@ -1,0 +1,26 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: auto;
+  width: 250px;
+  height: 225px;
+  padding: 2rem;
+}
+
+.form-input {
+  width: 100%;
+  padding-block: 0.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding-block: 0.5rem;
+  font-size: 1.035rem;
+}
