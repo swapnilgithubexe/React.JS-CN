@@ -1,4 +1,17 @@
 import { Component } from "react";
+import styled from "styled-components";
+
+const CartCount = styled.div`
+margin-top: 12px;
+  background: orange;
+  padding: 4px 8px;
+  position: absolute;
+  right: 10px;
+  top: -5px;
+  font-size: 8px;
+  border-radius: 50%;
+
+`
 
 class Navbar extends Component {
   render() {
@@ -10,7 +23,7 @@ class Navbar extends Component {
             style={styles.cartContainer}
             className="cartContainer">
             <img style={styles.cartIcon} className="cartIcon" src="https://cdn-icons-png.flaticon.com/128/833/833314.png" alt="cart item" />
-            <span style={styles.cartCount} className="cartCount">1 </span>
+            <CartCount className="cartCount">1 </CartCount>
           </div>
         </div>
       </>
@@ -19,6 +32,8 @@ class Navbar extends Component {
 }
 
 export default Navbar;
+
+
 
 const styles = {
   nav: {
@@ -43,15 +58,15 @@ const styles = {
     position: "relative",
     cursor: "pointer"
   },
-  cartCount: {
-    marginTop: 12,
-    background: "orange",
-    padding: "4px 8px",
-    position: "absolute",
-    right: 10,
-    top: -5,
-    fontSize: 8,
-    borderRadius: "50%"
-  }
+  // cartCount: {
+  //   marginTop: 12,
+  //   background: "orange",
+  //   padding: "4px 8px",
+  //   position: "absolute",
+  //   right: 10,
+  //   top: -5,
+  //   fontSize: 8,
+  //   borderRadius: "50%"
+  // }
 
 }
