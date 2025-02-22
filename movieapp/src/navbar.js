@@ -23,7 +23,7 @@ class Navbar extends Component {
             style={styles.cartContainer}
             className="cartContainer">
             <img style={styles.cartIcon} className="cartIcon" src="https://cdn-icons-png.flaticon.com/128/833/833314.png" alt="cart item" />
-            <CartCount className="cartCount">1 </CartCount>
+            <CartCount className="cartCount">{this.props.cartCount}</CartCount>
           </div>
         </div>
       </>

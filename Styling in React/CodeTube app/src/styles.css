@@ -1,0 +1,90 @@
+/* Change the following CSS rules to styled components */
+
+/* START */
+.list {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.course button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  padding: 7px 15px;
+  color: #fff;
+  font-weight: bold;
+  background-color: red;
+}
+
+.instructor button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  padding: 7px 15px;
+  color: #fff;
+  font-weight: bold;
+  background-color: blue;
+}
+/* END */
+
+/* Do not change the CSS rules below */
+.App {
+  min-width: 600px;
+  width: 90%;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.navbar img {
+  width: 40px;
+  cursor: pointer;
+}
+
+.navbar div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.container {
+  display: flex;
+  gap: 50px;
+}
+
+.course {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.course img {
+  width: 40%;
+}
+
+.instructor {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 10px;
+}
+
+.instructor img {
+  width: 100%;
+}
