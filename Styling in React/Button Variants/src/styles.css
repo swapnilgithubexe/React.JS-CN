@@ -1,0 +1,25 @@
+.App {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.App > h3 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.App > div {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.App > div h3 {
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+}
+
+button {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
