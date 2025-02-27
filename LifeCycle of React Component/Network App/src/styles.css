@@ -1,0 +1,19 @@
+img,
+b {
+  width: 250px;
+}
+b {
+  display: block;
+  font-size: 1.75rem;
+  text-align: right;
+  cursor: pointer;
+}
+b:hover {
+  color: red;
+}
+.person {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: fit-content;
+  padding: 20px;
+  margin: 50px auto;
+}
