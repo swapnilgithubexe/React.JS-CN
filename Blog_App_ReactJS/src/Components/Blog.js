@@ -1,29 +1,46 @@
 //Blogging App using Hooks
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useReducer } from "react";
+
+const blogsReducer = (state, action) => {
+    switch (action.type) {
+        case "ADD":
+            return [action.blog, ...state]
+
+        case "REMOVE":
+            return state.filter((blog, i) => i !== action.index)
+
+        default:
+            return [];
+    }
+}
 export default function Blog() {
 
     // const [title, setTitle] = useState("");
-    // const [content, setContent] = useState("");
-    useEffect(() => {
-        titleRef.current.focus();
-    }, [])
+    // const [content, setContent] = useState("")
 
 
     const [formData, setFormData] = useState({ title: "", content: "" })
-    const [blogs, setBlogs] = useState([]);
+    // const [blogs, setBlogs] = useState([]);
+    const [blogs, dispatch] = useReducer(blogsReducer, [])
     const contentRef = useRef();
-    const titleRef = useRef(null);
+    const titleRef = useRef();
+
+    useEffect(() => {
+        titleRef.current.focus();
+        document.title = blogs.length > 0 ? blogs[0].title : "No Blogs"
+    }, [blogs])
 
 
     //Passing the synthetic event as argument to stop refreshing the page on submit
     const removeBlogHandler = (index) => {
-        setBlogs(blogs.filter((_, i) => i !== index)
-        )
+        dispatch({ type: "REMOVE", index: index })
+
     }
     function handleSubmit(e) {
         e.preventDefault();
-        const { title, content } = formData;
-        setBlogs([{ title, content }, ...blogs])
+        // setBlogs([{ title, content }, ...blogs])
+        dispatch({ type: "ADD", blog: { title: formData.title, content: formData.content } })
+        setFormData({ title: "", content: "" })
 
         contentRef.current.value = ""
         titleRef.current.value = ""
@@ -51,7 +68,7 @@ export default function Blog() {
                     </Row >
 
                     {/* Row component to create a row for Text area field */}
-                    <Row label="Content">
+                    <Row required label="Content">
                         <textarea ref={contentRef}
                             onChange={(e) => setFormData((prev) => ({
                                 ...prev, content: e.target.value
