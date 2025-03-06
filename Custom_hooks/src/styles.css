@@ -1,0 +1,32 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.btn {
+  background-color: black;
+  color: white;
+  padding: 0.75rem;
+  margin: 1rem;
+}
+
+#name {
+  margin: 1rem auto;
+}
+
+form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+form input {
+  height: 1.5rem;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
