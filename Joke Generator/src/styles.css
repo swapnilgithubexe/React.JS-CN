@@ -1,0 +1,21 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.btn {
+  padding: 0.75rem 1rem;
+  color: white;
+  background-color: blueviolet;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  border: 1px solid blueviolet;
+  color: blueviolet;
+  background-color: transparent;
+  cursor: pointer;
+}
