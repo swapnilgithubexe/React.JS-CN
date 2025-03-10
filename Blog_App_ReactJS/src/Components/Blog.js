@@ -1,5 +1,7 @@
 //Blogging App using Hooks
 import { useRef, useState, useEffect, useReducer } from "react";
+import { db } from "../firebaseinit.js";
+import { addDoc, collection } from "firebase/firestore";
 
 const blogsReducer = (state, action) => {
     switch (action.type) {
@@ -36,10 +38,15 @@ export default function Blog() {
         dispatch({ type: "REMOVE", index: index })
 
     }
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         // setBlogs([{ title, content }, ...blogs])
         dispatch({ type: "ADD", blog: { title: formData.title, content: formData.content } })
+        const docRef = await addDoc(collection(db, "blogs"), {
+            title: formData.title,
+            content: formData.content,
+            createdAt: new Date()
+        })
         setFormData({ title: "", content: "" })
 
         contentRef.current.value = ""
