@@ -1,7 +1,7 @@
 //Blogging App using Hooks
 import { useRef, useState, useEffect, useReducer } from "react";
 import { db } from "../firebaseinit.js";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 
 const blogsReducer = (state, action) => {
     switch (action.type) {
@@ -10,6 +10,9 @@ const blogsReducer = (state, action) => {
 
         case "REMOVE":
             return state.filter((blog, i) => i !== action.index)
+
+        case "SET_BLOGS":
+            return action.blogs;
 
         default:
             return [];
@@ -31,6 +34,25 @@ export default function Blog() {
         titleRef.current.focus();
         document.title = blogs.length > 0 ? blogs[0].title : "No Blogs"
     }, [blogs])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            // const docRef = collection(db, "blogs");
+            const docSnap = await getDocs(collection(db, "blogs"))
+            const blogs = docSnap.docs.map((item, i) => {
+                return {
+                    id: item.id,
+                    ...item.data()
+                }
+
+            })
+            // setFormData({ title: blogs.title, content: blogs.content })
+            // console.log(blogs);
+            dispatch({ type: "SET_BLOGS", blogs: blogs })
+
+        }
+        fetchData();
+    }, [])
 
 
     //Passing the synthetic event as argument to stop refreshing the page on submit
