@@ -1,7 +1,7 @@
 //Blogging App using Hooks
 import { useRef, useState, useEffect, useReducer } from "react";
 import { db } from "../firebaseinit.js";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
 
 const blogsReducer = (state, action) => {
     switch (action.type) {
@@ -36,22 +36,32 @@ export default function Blog() {
     }, [blogs])
 
     useEffect(() => {
-        const fetchData = async () => {
-            // const docRef = collection(db, "blogs");
-            const docSnap = await getDocs(collection(db, "blogs"))
-            const blogs = docSnap.docs.map((item, i) => {
+        // const fetchData = async () => {
+
+        //     const docSnap = await getDocs(collection(db, "blogs"))
+        //     const blogs = docSnap.docs.map((item, i) => {
+        //         return {
+        //             id: item.id,
+        //             ...item.data()
+        //         }
+
+        //     })
+        //     // setFormData({ title: blogs.title, content: blogs.content })
+        //     // console.log(blogs);
+        //     dispatch({ type: "SET_BLOGS", blogs: blogs })
+
+        // }
+        // fetchData();
+
+        const unsub = onSnapshot(collection(db, "blogs"), (snapshot) => {
+            const blogs = snapshot.docs.map((item) => {
                 return {
                     id: item.id,
                     ...item.data()
                 }
-
             })
-            // setFormData({ title: blogs.title, content: blogs.content })
-            // console.log(blogs);
             dispatch({ type: "SET_BLOGS", blogs: blogs })
-
-        }
-        fetchData();
+        })
     }, [])
 
 
