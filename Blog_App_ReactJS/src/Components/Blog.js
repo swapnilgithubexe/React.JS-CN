@@ -1,7 +1,7 @@
 //Blogging App using Hooks
 import { useRef, useState, useEffect, useReducer } from "react";
 import { db } from "../firebaseinit.js";
-import { addDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot } from "firebase/firestore";
 
 const blogsReducer = (state, action) => {
     switch (action.type) {
@@ -66,8 +66,10 @@ export default function Blog() {
 
 
     //Passing the synthetic event as argument to stop refreshing the page on submit
-    const removeBlogHandler = (index) => {
-        dispatch({ type: "REMOVE", index: index })
+    const removeBlogHandler = async (id) => {
+        const docRef = doc(db, "blogs", id);
+        await deleteDoc(docRef)
+        // dispatch({ type: "REMOVE", index: index })
 
     }
     async function handleSubmit(e) {
@@ -131,7 +133,7 @@ export default function Blog() {
                         <h3>{item.title}</h3>
                         <p>{item.content}</p>
                         <div className="blog-btn">
-                            <button onClick={() => removeBlogHandler(index)} className="btn remove">Delete</button>
+                            <button onClick={() => removeBlogHandler(item.id)} className="btn remove">Delete</button>
                         </div>
                     </div>
                 ))
