@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import styles from "../styles/Total.module.css";
 import { itemContext } from "../itemContext";
+import { totalContext } from "../totalContext";
 
 function Navbar() {
-  const { total, item } = useContext(itemContext);
+  const { item } = useContext(itemContext);
+  const { total } = useContext(totalContext);
   return (
     <div className={styles.container}>
       <h1>Total : &#x20B9; {total}</h1>
