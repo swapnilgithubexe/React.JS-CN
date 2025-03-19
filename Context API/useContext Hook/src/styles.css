@@ -1,0 +1,22 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 60vw;
+  margin: 50px auto;
+}
+
+input,
+textarea {
+  outline: none;
+  padding: 5px;
+  font-size: 1.1rem;
+}
+
+.card {
+  width: 40vw;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(234, 234, 234);
+}
