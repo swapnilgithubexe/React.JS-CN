@@ -4,8 +4,8 @@ import { itemContext } from "../itemContext";
 import { totalContext } from "../totalContext";
 
 function ItemCard({ name, price }) {
-  const { item, setItem } = useContext(itemContext);
-  const { total, setTotal } = useContext(totalContext);
+  const { total, setTotal, item, setItem } = useContext(itemContext);
+  // const {  } = useContext(totalContext);
 
   const handleAdd = () => {
     setTotal(total + price);

@@ -4,8 +4,8 @@ import { itemContext } from "../itemContext";
 import { totalContext } from "../totalContext";
 
 function Navbar() {
-  const { item } = useContext(itemContext);
-  const { total } = useContext(totalContext);
+  const { item, total } = useContext(itemContext);
+  // const {  } = useContext(totalContext);
   return (
     <div className={styles.container}>
       <h1>Total : &#x20B9; {total}</h1>
