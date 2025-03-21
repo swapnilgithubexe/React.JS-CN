@@ -1,8 +1,8 @@
 import './App.css';
 import Items from './components/Items';
 import Navbar from './components/Navbar';
-import CustomItemContext, { itemContext } from './itemContext';
-import { totalContext } from './totalContext';
+import CustomItemContext from './itemContext';
+// import { totalContext } from './totalContext';
 
 
 function App() {

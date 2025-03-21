@@ -6,20 +6,26 @@
   color: var(--primary-color);
   padding: 1rem;
 }
+.buttonsWrapper {
+  margin-block: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
 
-.itemButton {
-  border: 0.2rem solid #000;
+.button {
+  border: 0.15rem solid #000;
   background-color: var(--primary-color);
   color: var(--secondary-color);
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 400;
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  box-shadow: 3px 3px 0px 1px rgba(0, 0, 0, 1);
+  padding: 0.3rem 0.5rem;
+  box-shadow: 2px 2px 0px 1px rgba(0, 0, 0, 1);
   transition: all 0.2s ease-in-out;
 }
 
-.itemButton:hover {
+.button:hover {
   transform: scale(0.9);
   box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 1);
   background-color: var(--secondary-color);
