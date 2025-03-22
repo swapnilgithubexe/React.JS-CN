@@ -15,6 +15,32 @@ const CustomItemContext = ({ children }) => {
     setShowCart(!showCart)
   }
 
+  const onClear = () => {
+    handleReset();
+    toggle();
+  };
+
+  const handleRemove = ({ id, price }) => {
+    if (total <= 0) {
+      return;
+    }
+    const index = cart.findIndex((item) => item.id === id);
+    if (index === -1) return;
+
+    const updatedCart = [...cart];
+
+    if (updatedCart[index].quantity > 1) {
+      updatedCart[index] = { ...updatedCart[index], quantity: updatedCart[index].quantity - 1 }
+    }
+    else {
+      updatedCart.splice(index, 1);
+    }
+
+    setCart(updatedCart);
+    setTotal((prev) => prev - price)
+    setItem((prev) => prev - 1)
+  };
+
   const handleAdd = ({ id, name, price }) => {
     const index = cart.findIndex((item) => item.id === id)
 
@@ -39,7 +65,7 @@ const CustomItemContext = ({ children }) => {
   };
 
   return (
-    <itemContext.Provider value={{ total, setTotal, item, setItem, toggle, handleReset, handleAdd, cart }}>
+    <itemContext.Provider value={{ total, setTotal, item, setItem, toggle, handleReset, handleAdd, cart, handleRemove, onClear }}>
       {showCart && <CartModal />}
       {children}
     </itemContext.Provider>

@@ -4,16 +4,8 @@ import { itemContext } from "../itemContext";
 // import { totalContext } from "../totalContext";
 
 function ItemCard({ id, name, price }) {
-  const { total, setTotal, setItem, handleAdd } = useContext(itemContext);
+  const { handleRemove, handleAdd } = useContext(itemContext);
   // const {  } = useContext(totalContext);
-
-  const handleRemove = () => {
-    if (total <= 0) {
-      return;
-    }
-    setTotal((prevState) => prevState - price);
-    setItem((prevState) => prevState - 1);
-  };
 
   return (
     <div className={styles.itemCard}>
@@ -26,7 +18,10 @@ function ItemCard({ id, name, price }) {
         >
           Add
         </button>
-        <button className={styles.itemButton} onClick={() => handleRemove()}>
+        <button
+          className={styles.itemButton}
+          onClick={() => handleRemove({ id, price })}
+        >
           Remove
         </button>
       </div>
