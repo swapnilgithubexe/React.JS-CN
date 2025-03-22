@@ -18,12 +18,15 @@ const CustomItemContext = ({ children }) => {
   const onClear = () => {
     handleReset();
     toggle();
+    setCart([])
   };
 
   const handleRemove = ({ id, price }) => {
     if (total <= 0) {
       return;
     }
+    console.log(cart);
+
     const index = cart.findIndex((item) => item.id === id);
     if (index === -1) return;
 
@@ -37,6 +40,8 @@ const CustomItemContext = ({ children }) => {
     }
 
     setCart(updatedCart);
+    console.log(updatedCart);
+
     setTotal((prev) => prev - price)
     setItem((prev) => prev - 1)
   };
