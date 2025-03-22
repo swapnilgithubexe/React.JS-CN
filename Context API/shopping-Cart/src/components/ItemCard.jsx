@@ -3,14 +3,9 @@ import styles from "../styles/ItemCard.module.css";
 import { itemContext } from "../itemContext";
 // import { totalContext } from "../totalContext";
 
-function ItemCard({ name, price }) {
-  const { total, setTotal, item, setItem } = useContext(itemContext);
+function ItemCard({ id, name, price }) {
+  const { total, setTotal, setItem, handleAdd } = useContext(itemContext);
   // const {  } = useContext(totalContext);
-
-  const handleAdd = () => {
-    setTotal(total + price);
-    setItem(item + 1);
-  };
 
   const handleRemove = () => {
     if (total <= 0) {
@@ -25,7 +20,10 @@ function ItemCard({ name, price }) {
       <div className={styles.itemName}>{name}</div>
       <div className={styles.itemPrice}>&#x20B9; {price}</div>
       <div className={styles.itemButtonsWrapper}>
-        <button className={styles.itemButton} onClick={() => handleAdd()}>
+        <button
+          className={styles.itemButton}
+          onClick={() => handleAdd({ id, name, price })}
+        >
           Add
         </button>
         <button className={styles.itemButton} onClick={() => handleRemove()}>
