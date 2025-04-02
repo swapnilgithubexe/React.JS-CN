@@ -1,5 +1,4 @@
-import redux from "redux";
-
+const redux = require("redux")
 //Actions
 
 const ADD_TODO = "ADD TODO";
@@ -34,7 +33,7 @@ const todoReducer = (state = initialState, action) => {
     case TOGGLE_TODO:
       return {
         ...state,
-        todos: todos.mao((todo, i) => {
+        todos: state.todos.map((todo, i) => {
           if (i === action.index) {
             todo.completed = !todo.completed
           }
@@ -46,3 +45,13 @@ const todoReducer = (state = initialState, action) => {
   }
 }
 
+//store
+const store = redux.createStore(todoReducer);
+
+//dispatch actions
+store.dispatch(addToDo("Complete Redux"))
+store.dispatch(addToDo("Apply for companies"));
+store.dispatch(toggleToDo(1));
+
+//Read data from store
+console.log(store.getState());
