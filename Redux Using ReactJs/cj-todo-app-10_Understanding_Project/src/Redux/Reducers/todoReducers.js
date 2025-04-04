@@ -1,10 +1,17 @@
-import { ADD_TODO, TOGGLE_TODO, toggleTodo, addTodo } from "../Actions/todoActions.js"
+import { ADD_TODO, TOGGLE_TODO, } from "../Actions/todoActions.js"
 
 const initialState = {
-  todos: []
+  todos: [
+    {
+      "text": "Gym at 5:30 PM", completed: false
+    },
+    {
+      "text": "Lunch at 2 PM", completed: true
+    }
+  ]
 }
 
-export const todoReducer = (state, action) => {
+export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
       return {
