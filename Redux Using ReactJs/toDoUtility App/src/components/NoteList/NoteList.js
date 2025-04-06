@@ -9,7 +9,7 @@ function NoteList() {
     <div className="container">
       <ul>
         {notes.map((note, index) => (
-          <li>
+          <li key={index}>
             <p>{note.createdOn.toLocaleDateString()}</p>
             <p className="note-content">{note.text}</p>
             <button className="btn btn-danger">Delete</button>

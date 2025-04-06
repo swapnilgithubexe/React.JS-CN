@@ -1,4 +1,4 @@
-import { ADD_NOTE, addNote, DELETE_NOTE, deleteNote } from "../actions/noteAction"
+import { ADD_NOTE, DELETE_NOTE } from "../actions/noteAction"
 
 const initialState = {
   notes: [{ text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.", createdOn: new Date() }, {
