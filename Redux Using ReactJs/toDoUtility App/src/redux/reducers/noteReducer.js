@@ -28,7 +28,9 @@ const noteSlice = createSlice({
   }
 })
 
-export const noteReducer = noteSlice.reducer
+export const noteReducer = noteSlice.reducer;
+
+export const actions = noteSlice.actions;
 
 
 //Reducer using react redux
