@@ -1,4 +1,6 @@
-import { ADD_NOTE, DELETE_NOTE } from "../actions/noteAction"
+// import { ADD_NOTE, DELETE_NOTE } from "../actions/noteAction"
+
+import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
   notes: [{ text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.", createdOn: new Date() }, {
@@ -7,28 +9,49 @@ const initialState = {
   }]
 }
 
-export const noteReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_NOTE:
-      return {
-        ...state,
-        notes: [
-          ...state.notes,
-          {
-            "text": action.text,
-            createdOn: new Date()
-          }
-        ]
-      }
 
-    case DELETE_NOTE:
-      state.notes.splice(action.index, 1)
-      return {
-        ...state,
-        notes: [...state.notes]
-      }
+//Reducer using redux toolkit
 
-    default:
-      return state
+const noteSlice = createSlice({
+  name: "notes",
+  initialState: initialState,
+  reducers: {
+    add: (state, action) => {
+      state.notes.push({
+        text: action.payload,
+        createdOn: new Date()
+      })
+    },
+    delete: (state, action) => {
+      state.notes.splice(action.payload, 1)
+    }
   }
-}
+})
+
+
+//Reducer using react redux
+// export const noteReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case ADD_NOTE:
+//       return {
+//         ...state,
+//         notes: [
+//           ...state.notes,
+//           {
+//             "text": action.text,
+//             createdOn: new Date()
+//           }
+//         ]
+//       }
+
+//     case DELETE_NOTE:
+//       state.notes.splice(action.index, 1)
+//       return {
+//         ...state,
+//         notes: [...state.notes]
+//       }
+
+//     default:
+//       return state
+//   }
+// }
