@@ -1,10 +1,11 @@
+import { deleteNote } from "../../redux/actions/noteAction";
 import "./NoteList.css";
+import { useSelector, useDispatch } from "react-redux";
 
 function NoteList() {
-  const notes = [{ text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.", createdOn: new Date() }, {
-    text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
-    createdOn: new Date()
-  }];
+  const dispatch = useDispatch();
+  const notes = useSelector((state) => state.noteReducer.notes);
+
   return (
     <div className="container">
       <ul>
@@ -12,7 +13,7 @@ function NoteList() {
           <li key={index}>
             <p>{note.createdOn.toLocaleDateString()}</p>
             <p className="note-content">{note.text}</p>
-            <button className="btn btn-danger">Delete</button>
+            <button onClick={() => dispatch(deleteNote(index))} className="btn btn-danger">Delete</button>
           </li>
         ))}
       </ul>

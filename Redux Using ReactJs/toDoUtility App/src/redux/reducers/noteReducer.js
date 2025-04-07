@@ -25,7 +25,7 @@ export const noteReducer = (state = initialState, action) => {
       state.notes.splice(action.index, 1)
       return {
         ...state,
-        notes: state.notes
+        notes: [...state.notes]
       }
 
     default:
