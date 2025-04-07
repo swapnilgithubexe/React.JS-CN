@@ -28,6 +28,8 @@ const noteSlice = createSlice({
   }
 })
 
+export const noteReducer = noteSlice.reducer
+
 
 //Reducer using react redux
 // export const noteReducer = (state = initialState, action) => {

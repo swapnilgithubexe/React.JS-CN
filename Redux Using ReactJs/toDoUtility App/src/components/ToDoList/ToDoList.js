@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { toggleTodo } from "../../redux/actions/todoActions";
+// import { toggleTodo } from "../../redux/actions/todoActions";
 
 import "./ToDoList.css";
+import { actions } from "../../redux/reducers/todoReducer";
 
 function ToDoList() {
 
@@ -18,7 +19,7 @@ function ToDoList() {
             <span className="content">{todo.text}</span>
             <span className={todo.completed ? 'completed' : 'pending'}>{todo.completed ? 'Completed' : 'Pending'}</span>
             <button className="btn btn-warning"
-              onClick={() => { disptach(toggleTodo(index)) }}
+              onClick={() => { disptach(actions.toggle(index)) }}
             >Toggle</button>
           </li>
         ))}
