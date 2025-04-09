@@ -3,9 +3,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  notes: [{ text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.", createdOn: new Date() }, {
+  notes: [{ text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.", createdOn: new Date().toISOString() }, {
     text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
-    createdOn: new Date()
+    createdOn: new Date().toISOString()
   }]
 }
 
@@ -19,7 +19,7 @@ const noteSlice = createSlice({
     add: (state, action) => {
       state.notes.push({
         text: action.payload,
-        createdOn: new Date()
+        createdOn: new Date().toISOString()
       })
     },
     delete: (state, action) => {
