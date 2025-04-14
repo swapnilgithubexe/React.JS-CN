@@ -1,0 +1,42 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  gap: 10px;
+  background-color: #e5e5e5;
+  padding-left: 30px;
+}
+
+.navbar img {
+  height: 60%;
+}
+
+.home > h3 {
+  color: #ff0055;
+  font-size: 1.75rem;
+  text-align: center;
+  margin-block: 30px;
+}
+
+.list {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 190px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.card h3,
+.card p {
+  font-size: 0.9rem;
+}
